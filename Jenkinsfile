@@ -4,9 +4,17 @@ properties([
 
 node(){
     cleanWs()
-    checkoutscm
-    sh"make"
-    sh"./main"
 	
-	archiveArtifacts artifacts: 'main'
+    stage("checkout"){  
+      checkout scm
+    }
+
+    stage("build"){ 
+      sh "make"
+      sh "./main"
+    }
+
+    stage("archivage"){ 
+      archiveArtifacts artifacts: 'main'
+    }
 }
