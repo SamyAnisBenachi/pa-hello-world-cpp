@@ -7,4 +7,6 @@ node(){
     checkoutscm
     sh"make"
     sh"./main"
+	
+	archiveArtifacts artifacts: 'main'
 }
